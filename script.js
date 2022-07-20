@@ -8,6 +8,31 @@ function writePassword() {
 
   passwordText.value = password;
 
+  // Password Criteria
+  var lowercaseLett = confirm("Do you want your password to contain lowercase letters?");
+  var uppercaseLett = confirm("Do you want your password to contain uppercase letters?");
+  var num = confirm("Do you want your password to contain numbers?");
+  var specialChar = confirm("Do you want your password to contain special characters?");
+  var passwordLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
+
+  // Function that checks if its between 8-128 characters
+  if (passwordLength < 8 || passwordLength > 128) {
+    alert("Your password is not between 8 characters and 128 characters. Please try again.");
+    var passwordLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
+  }
+
+  // If clicked cancel for password criteria 
+  else if (lowercaseLett === false && uppercaseLett === false && num === false && specialChar === false) {
+    alert("You must chose at least one password criteria.");
+    var lowercaseLett = confirm("Do you want your password to contain lowercase letters?");
+    var uppercaseLett = confirm("Do you want your password to contain uppercase letters?");
+    var num = confirm("Do you want your password to contain numbers?");
+    var specialChar = confirm("Do you want your password to contain special characters?");
+  }
+
+  
+
+
 }
 
 // Add event listener to generate button
