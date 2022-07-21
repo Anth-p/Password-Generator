@@ -1,12 +1,16 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Variables for all letters, numbers, and characters
+var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
+var uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numbers = "0123456789";
+var optionsVariable = "";
+
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
 
   // Password Criteria
   var lowercaseLett = confirm("Do you want your password to contain lowercase letters?");
@@ -47,17 +51,22 @@ function writePassword() {
       optionsVariable += specialCharacters;
   }
 
-  
+  // Generate random password
+  for (var i = 0; i < passwordLength; i++) {
+    // Continues to select a random character value from the string until it is the desired length
+    randomString += optionsVariable.charAt(Math.floor(Math.random() * optionsVariable.length));
+  }
+  password.value = randomString;
 
+  // Prevent the screen from refreshing when whe button is clicked
+  event.preventDefault();
 
+  // Clear previous password from screen
+  password.value === "";
+  var randomString = "";
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// Variables for all letters, numbers, and characters
-var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-var lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
-var uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numbers = "0123456789";
-var optionsVariable = "";
+
